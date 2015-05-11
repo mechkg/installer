@@ -1,4 +1,4 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer.actions
 
 import javafx.fxml.FXML
 import javafx.scene.web.WebView

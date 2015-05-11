@@ -1,4 +1,4 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer
 
 import java.net.URL
 import javafx.fxml.FXMLLoader

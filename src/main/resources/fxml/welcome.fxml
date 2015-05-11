@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.ncl.di.WelcomeController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.ncl.di.installer.actions.WelcomeController">
    <center>
       <WebView fx:id="webView" BorderPane.alignment="CENTER" />
    </center>

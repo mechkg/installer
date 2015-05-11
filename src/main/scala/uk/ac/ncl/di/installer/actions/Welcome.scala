@@ -1,9 +1,11 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer.actions
 
 import javafx.fxml.FXMLLoader
 import javafx.scene.layout.BorderPane
-import scalafx.application.Platform
+import uk.ac.ncl.di.installer.core._
+
 import scalafx.Includes._
+import scalafx.application.Platform
 
 class WelcomeAction extends Action[Unit] {
 
@@ -25,17 +27,24 @@ class WelcomeAction extends Action[Unit] {
       val (pane, _) = loadUi()
 
       context.setInterface(pane)
-    }
 
-    println ("Welcome action...")
-    Thread.sleep(5000)
-    println ("Done")
-
-    Platform.runLater {
       context.enableNext(true)
     }
 
-    (Right(()), Seq())
+    println ("Waiting for user")
+
+    context.waitForUser() match {
+      case UserAction.Next => {
+        println ("Hello action!")
+        Thread.sleep(3000)
+        println ("Done!")
+
+        (Right(()), Seq())
+      }
+      case UserAction.Cancel => {
+        (Left(None), Seq())
+      }
+    }
   }
 }
 

@@ -6,12 +6,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.ncl.di.MainWindowController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.ncl.di.installer.MainWindowController">
    <bottom>
       <FlowPane alignment="CENTER_RIGHT" hgap="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button cancelButton="true" mnemonicParsing="false" text="⨯ Cancel" />
-            <Button mnemonicParsing="false" text="← Previous" />
+            <Button cancelButton="true" mnemonicParsing="false" text="⨯ Cancel" fx:id="cancelButton" onAction="#cancel"/>
             <Button defaultButton="true" mnemonicParsing="false" onAction="#next" text="Next →" fx:id="nextButton" disable="true"/>
          </children>
          <padding>

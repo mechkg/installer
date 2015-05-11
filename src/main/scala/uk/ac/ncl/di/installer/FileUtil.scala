@@ -1,4 +1,4 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer
 
 import java.io.{IOException, FileOutputStream, File, InputStream}
 import java.util.zip.ZipInputStream

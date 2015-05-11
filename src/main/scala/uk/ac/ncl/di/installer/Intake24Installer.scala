@@ -1,8 +1,14 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer
+
+import uk.ac.ncl.di.installer.actions.{ChoosePath, WelcomeAction}
+import uk.ac.ncl.di.installer.core.InstallContext
+import uk.ac.ncl.di.installer.core.InstallContext
 
 import scalafx.application.JFXApp
 import scalafx.scene.Scene
 import scalafx.scene.layout.Pane
+
+
 
 object Intake24Installer extends JFXApp with InstallContext {
 
@@ -23,7 +29,7 @@ object Intake24Installer extends JFXApp with InstallContext {
       val install =
         for (
           _ <- WelcomeAction();
-          _ <- WelcomeAction()
+          path <- ChoosePath()
         ) yield ()
 
       val (result, undoSequence) = install.run(Intake24Installer.this)

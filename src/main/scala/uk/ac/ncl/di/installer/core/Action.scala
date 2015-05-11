@@ -1,4 +1,4 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer.core
 
 trait Action[A] {
 
@@ -16,7 +16,7 @@ trait Action[A] {
     }
   }
 
-  def flatMap[B](f: A => Action[B])  = {
+  def flatMap[B](f: A => Action[B]) = {
     val outer = this
     new Action[B] {
       def run(context: InstallContext) = {
@@ -26,19 +26,9 @@ trait Action[A] {
           case Left(errorMessage) => (Left(errorMessage), outerUndo)
           case Right(result) => {
             val innerAction = f(result)
+            val (innerResult, innerUndo) = innerAction.run(context)
 
-            context.waitForUser() match {
-              case UserAction.Next => {
-                context.enableNext(false)
-
-                val (innerResult, innerUndo) = innerAction.run(context)
-
-                (innerResult, outerUndo ++ innerUndo)
-              }
-              case UserAction.Cancel => {
-                (Left(None), outerUndo)
-              }
-            }
+            (innerResult, innerUndo ++ outerUndo)
           }
         }
       }

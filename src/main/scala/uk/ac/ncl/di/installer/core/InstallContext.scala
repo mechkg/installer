@@ -1,4 +1,4 @@
-package uk.ac.ncl.di
+package uk.ac.ncl.di.installer.core
 
 import scalafx.scene.layout.Pane
 
